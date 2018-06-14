@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+    reverseproxy:
+        build:
+            context: docker/reverseproxy
+        ports:
+          - "80:80"
+          - "443:443"
+        restart: always
+
+    dbserver:
+        build:
+            context: docker/mariadb
+        volumes:
+            - ./docker/mariadb/data:/var/lib/mysql
+        restart: always
+
+    testsite:
+        build:
+            context: testsite
+        volumes:
+            - ./testsite:/var/www/html
+        depends_on:
+            - dbserver
+            - reverseproxy
+        restart: always

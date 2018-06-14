@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker build -t taphp:latest docker/aphp/
+
+# a local dir for mariadb data so data persists even if we delete volumes
+mkdir -p ./docker/mariadb/data
+docker build -t tmariadb:latest docker/mariadb/
+
+docker-compose -f docker-compose-dev.yml up --build
