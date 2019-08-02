@@ -1,6 +1,6 @@
 # testsite.com
 
-This is proof-of-concept for a working combo of reverse-proxy, apache, php, mysql
+This is proof-of-concept for a working docker-compose combo of reverse-proxy, apache, php, mysql
 
 * clone this somewhere docker can access, cd into this folder
 * make sure nothing is running on your docker machine with `./stop`
